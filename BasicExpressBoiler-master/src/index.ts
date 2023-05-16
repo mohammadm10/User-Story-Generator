@@ -1,17 +1,13 @@
-import express, { json, Request, Response } from 'express';
-import { errorHandler } from './middleware/error';
-import { NotFoundHandler } from './middleware/notFound';
+import express from 'express';
 
 const app = express();
+const port = 3000;
 
-app.get('/', (req: Request, res: Response) => {
-  res.json('Hello, World!');
+app.get('/api', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.json({ message: 'Hello from the backend!' });
 });
 
-app.use(NotFoundHandler);
-app.use(errorHandler);
-
-const port = 4000;
 app.listen(port, () => {
-  console.log(`Server is listening on http://localhost:${port}`);
+  console.log(`Server is running on port ${port}`);
 });
