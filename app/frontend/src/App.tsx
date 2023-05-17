@@ -51,12 +51,13 @@ function App() {
         title: 'Missing requirement',
         text: 'Please enter a requirement in order to generate a User Story!',
       })
+    } else {
+      setIsLoading(true);
+      fetch(`http://localhost:3000/api/${input}`)
+        .then((response) => response.json())
+        .then((data) => setReply(data.message))
+        .catch((error) => console.error(error));
     }
-    setIsLoading(true);
-    fetch(`http://localhost:3000/api/${input}`)
-      .then((response) => response.json())
-      .then((data) => setReply(data.message))
-      .catch((error) => console.error(error));
   };
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
