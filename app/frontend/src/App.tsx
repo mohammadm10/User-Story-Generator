@@ -6,6 +6,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { IconButton, Tooltip } from '@mui/material';
 import { CircularProgress } from '@mui/material';
 import Swal from 'sweetalert2';
+import { useMediaQuery } from "@mui/material";
 
 const darkTheme = createTheme({
   palette: {
@@ -40,9 +41,7 @@ function App() {
   const [reply, setReply] = useState('');
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
-  console.log(reply.length);
-
+  const isMobile = useMediaQuery("(max-width: 700px)");
 
   const handleClick = () => {
     if (input === '') {
@@ -72,7 +71,11 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <main>
-        <h1 className='text-4xl font-bold flex justify-center py-20'>Welcome to User Story Generator!</h1>
+        {isMobile ? (
+          <h1 className='text-xl font-bold flex justify-center py-20'>Welcome to User Story Generator!</h1>
+        ) : (
+          <h1 className='text-4xl font-bold flex justify-center py-20'>Welcome to User Story Generator!</h1>
+        )}
         <div className='flex justify-center'>
           <TextField
             sx={{
@@ -107,12 +110,15 @@ function App() {
               </div>
             )
           )}
-
-
-
-          <div className='flex justify-center'>
-            <p>{formatReplyWithKeywords(reply)}</p>
-          </div>
+          {isMobile ? (
+            <div className='flex justify-center'>
+              <p className=' w-[90%]'>{formatReplyWithKeywords(reply)}</p>
+            </div>
+          ) : (
+            <div className='flex justify-center'>
+              <p>{formatReplyWithKeywords(reply)}</p>
+            </div>
+          )}
         </div>
       </main>
     </ThemeProvider>
