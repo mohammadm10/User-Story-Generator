@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch';
 import { config } from './config';
 
 const app = express();
-const port = 3000;
+const port = 5000;
 
 app.get('/api/:input', async (req, res) => {
 
