@@ -8,8 +8,10 @@ const port = 3000;
 
 app.use(cors());
 
-app.get('/api', async (req, res) => {
-  const prompt = 'Give me a user story in the Given, When, Then format for this requirement: User should be able to delete an account';
+app.get('/api/:input', async (req, res) => {
+
+  const input = req.params.input;
+  const prompt = `Give me a user story in the Given, When, Then format for this requirement: ${input}`;
   const apiKey = config.apiKey
   const model = 'gpt-3.5-turbo';
 

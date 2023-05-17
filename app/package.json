@@ -10,6 +10,7 @@
     "watch": "tsc -w"
   },
   "dependencies": {
+    "@mui/material": "^5.13.1",
     "@types/node": "^20.1.7",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
