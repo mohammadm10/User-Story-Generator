@@ -52,7 +52,7 @@ function App() {
       })
     } else {
       setIsLoading(true);
-      fetch(`http://localhost:3000/api/${input}`)
+      fetch(`/api/${input}`)
         .then((response) => response.json())
         .then((data) => setReply(data.message))
         .catch((error) => console.error(error));

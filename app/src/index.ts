@@ -1,17 +1,14 @@
 import express from 'express';
-import cors from 'cors';
 import fetch from 'isomorphic-fetch';
 import { config } from './config';
 
 const app = express();
 const port = 3000;
 
-app.use(cors());
-
 app.get('/api/:input', async (req, res) => {
 
   const input = req.params.input;
-  const prompt = `Give me a user story in the Given, When, Then format for this requirement: ${input}`;
+  const prompt = `Please provide me a user story in the Given, When, Then format for this requirement: ${input}`;
   const apiKey = config.apiKey
   const model = 'gpt-3.5-turbo';
 
