@@ -7,6 +7,7 @@ import { IconButton, Tooltip } from '@mui/material';
 import { CircularProgress } from '@mui/material';
 import Swal from 'sweetalert2';
 import { useMediaQuery } from "@mui/material";
+import API from './gptAPI';
 
 const darkTheme = createTheme({
   palette: {
@@ -36,28 +37,26 @@ function formatReplyWithKeywords(reply: string) {
   return formattedParts;
 }
 
-
 function App() {
   const [reply, setReply] = useState('');
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const isMobile = useMediaQuery("(max-width: 700px)");
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (input === '') {
       Swal.fire({
         icon: 'error',
         title: 'Missing requirement',
         text: 'Please enter a requirement in order to generate a User Story!',
-      })
+      });
     } else {
       setIsLoading(true);
-      fetch(`/api/${input}`)
-        .then((response) => response.json())
-        .then((data) => setReply(data.message))
-        .catch((error) => console.error(error));
+      let reply = await API(input);
+      setReply(reply);
     }
   };
+  
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
