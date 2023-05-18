@@ -1,8 +1,5 @@
-//import express from 'express';
 import fetch from 'isomorphic-fetch';
 import { config } from './config';
-
-//const app = express();
 
 export default async function API (input: string) {
 

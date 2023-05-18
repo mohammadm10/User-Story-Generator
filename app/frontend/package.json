@@ -55,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "@types/isomorphic-fetch": "^0.0.36",
     "tailwindcss": "^3.3.2"
   },
   "browser": {
