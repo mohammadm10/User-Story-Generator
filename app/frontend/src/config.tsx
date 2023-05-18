@@ -1,5 +1,4 @@
-// config.ts
 export const config = {
-    apiKey: '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',
+    apiKey: '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',
   };
   
