@@ -1,10 +1,9 @@
 import fetch from 'isomorphic-fetch';
-import { api } from './api';
 
 export default async function API (input: string) {
 
     const prompt = `Please provide me a user story in the Given, When, Then format for this requirement: ${input}`;
-    const apiKey = api.apiKey
+    const apiKey = process.env.REACT_APP_API_KEY
     const model = 'gpt-3.5-turbo';
   
     try {
