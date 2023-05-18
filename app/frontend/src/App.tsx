@@ -18,6 +18,10 @@ const darkTheme = createTheme({
 const keywords = ['given', 'when', 'then'];
 
 function formatReplyWithKeywords(reply: string) {
+  if (!reply) {
+    return null; // or return an appropriate value if reply is not expected to be null
+  }
+
   const regex = new RegExp(`\\b(${keywords.join('|')})\\b`, 'gi');
   const parts = reply.split(regex);
 
@@ -36,6 +40,7 @@ function formatReplyWithKeywords(reply: string) {
 
   return formattedParts;
 }
+
 
 function App() {
   const [reply, setReply] = useState('');
