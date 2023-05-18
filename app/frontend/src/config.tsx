@@ -1,4 +1,4 @@
 export const config = {
-    apiKey: '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',
+    apiKey: 'sk-w95SiT9a4g1JIloFOtzIT3BlbkFJ2WGCyVDnxmg7k73TaTMAd',
   };
   
