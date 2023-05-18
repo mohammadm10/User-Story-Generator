@@ -1,7 +1,7 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { TextField, Button } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { IconButton, Tooltip } from '@mui/material';
 import { CircularProgress } from '@mui/material';
