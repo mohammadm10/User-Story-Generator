@@ -19,7 +19,7 @@ const keywords = ['given', 'when', 'then'];
 
 function formatReplyWithKeywords(reply: string) {
   if (!reply) {
-    return null; // or return an appropriate value if reply is not expected to be null
+    return null;
   }
 
   const regex = new RegExp(`\\b(${keywords.join('|')})\\b`, 'gi');
@@ -57,6 +57,8 @@ function App() {
         text: 'Please enter a requirement in order to generate a User Story!',
       });
     } else {
+      setReply('');
+      setIsCopied(false);
       setIsLoading(true);
       let reply = await API(input);
       setReply(reply);
