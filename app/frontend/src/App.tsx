@@ -45,6 +45,7 @@ function formatReplyWithKeywords(reply: string) {
 function App() {
   const [reply, setReply] = useState('');
   const [input, setInput] = useState('');
+  const [isCopied, setIsCopied] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const isMobile = useMediaQuery("(max-width: 700px)");
 
@@ -68,6 +69,7 @@ function App() {
   };
 
   const onCopyClick = () => {
+    setIsCopied(true);
     navigator.clipboard.writeText(reply);
   };
 
@@ -96,7 +98,7 @@ function App() {
           />
         </div>
         <div className='flex justify-center py-10'>
-          <Button onClick={handleClick} variant="outlined">Generate User Story</Button>
+          <Button onClick={handleClick} variant="outlined">Create User Story</Button>
         </div>
         <div className=' py-10 flex-col'>
           {reply === '' && isLoading ? (
@@ -106,11 +108,20 @@ function App() {
           ) : (
             reply !== '' && (
               <div className='flex justify-center'>
+                {isCopied == false ? (
+
                 <Tooltip title='Copy User Story'>
                   <IconButton onClick={onCopyClick}>
                     <ContentCopyIcon />
                   </IconButton>
                 </Tooltip>
+                ) : (
+                  <Tooltip title='Copied!'>
+                  <IconButton onClick={onCopyClick}>
+                    <ContentCopyIcon />
+                  </IconButton>
+                </Tooltip>
+                )}
               </div>
             )
           )}
